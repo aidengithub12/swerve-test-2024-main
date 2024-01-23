@@ -13,15 +13,9 @@
 // flywheel
 package frc.robot.subsystems.Shooter;
 
-import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import frc.robot.subsystems.*;
-import org.littletonrobotics.junction.inputs.LoggableInputs;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkPIDController;
-import com.revrobotics.SparkPIDController.ArbFFUnits;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -32,9 +26,8 @@ public class ShooterIOSparkMax implements ShooterIO {
   private static final double GEAR_RATIO = 1.5;
 
   private final CANSparkMax Motor1 = new CANSparkMax(0, MotorType.kBrushless);
-  private final static CANSparkMax Motor2 = new CANSparkMax(1, MotorType.kBrushless);
-  final static RelativeEncoder encoder = Motor2.getEncoder();
-
+  private static final CANSparkMax Motor2 = new CANSparkMax(1, MotorType.kBrushless);
+  static final RelativeEncoder encoder = Motor2.getEncoder();
 
   public ShooterIOSparkMax() {
     Motor1.restoreFactoryDefaults();
@@ -44,7 +37,7 @@ public class ShooterIOSparkMax implements ShooterIO {
     Motor2.setCANTimeout(250);
 
     Motor1.setInverted(false);
-    
+
     Motor1.enableVoltageCompensation(12.0);
     Motor1.setSmartCurrentLimit(30);
     Motor2.enableVoltageCompensation(12);
@@ -54,7 +47,6 @@ public class ShooterIOSparkMax implements ShooterIO {
     Motor2.burnFlash();
   }
 
-  
   public void updateInputs(ShooterIOInputs inputs) {
     inputs.velocityRadPerSec =
         Units.rotationsPerMinuteToRadiansPerSecond(encoder.getVelocity() / GEAR_RATIO);
@@ -65,9 +57,11 @@ public class ShooterIOSparkMax implements ShooterIO {
   public double getVelocityRPM() {
     return ((ShooterIOSparkMax) encoder).getVelocityRPM();
   }
+
   public double getCharacterizationVelocity() {
     return encoder.getVelocity();
   }
+
   @Override
   public void setVoltage(double volts) {
     Motor1.setVoltage(volts);

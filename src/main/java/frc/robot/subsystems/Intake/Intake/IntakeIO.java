@@ -13,8 +13,6 @@ package frc.robot.subsystems.Intake.Intake;
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 
-
-
 import org.littletonrobotics.junction.AutoLog;
 
 public interface IntakeIO {

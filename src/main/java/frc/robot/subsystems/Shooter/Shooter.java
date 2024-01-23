@@ -17,11 +17,10 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.Shooter.ShooterIO.ShooterIOInputs;
 import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.inputs.LoggableInputs;
-import frc.robot.subsystems.Shooter.ShooterIOSparkMax;
-import frc.robot.subsystems.Shooter.ShooterIO.ShooterIOInputs;
 
 public class Shooter extends SubsystemBase {
   private final ShooterIO io;

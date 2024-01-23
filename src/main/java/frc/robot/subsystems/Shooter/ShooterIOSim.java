@@ -26,7 +26,6 @@ public class ShooterIOSim implements ShooterIO {
   private double ffVolts = 0.0;
   private double appliedVolts = 0.0;
 
-  
   public void updateInputs(ShooterIOInputs inputs) {
     if (closedLoop) {
       appliedVolts =

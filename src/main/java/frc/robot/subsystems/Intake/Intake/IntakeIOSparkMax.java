@@ -13,15 +13,9 @@
 // flywheel
 package frc.robot.subsystems.Intake.Intake;
 
-import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import frc.robot.subsystems.*;
-import org.littletonrobotics.junction.inputs.LoggableInputs;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkPIDController;
-import com.revrobotics.SparkPIDController.ArbFFUnits;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -36,7 +30,6 @@ public class IntakeIOSparkMax implements IntakeIO {
   private final CANSparkMax Motor3 = new CANSparkMax(2, MotorType.kBrushless);
   private final RelativeEncoder encoder = Motor2.getEncoder();
 
-
   public void ShooterIOSparkMax() {
     Motor1.restoreFactoryDefaults();
     Motor2.restoreFactoryDefaults();
@@ -46,7 +39,7 @@ public class IntakeIOSparkMax implements IntakeIO {
     Motor2.setCANTimeout(250);
     Motor3.setCANTimeout(250);
     Motor1.setInverted(false);
-    
+
     Motor1.enableVoltageCompensation(12.0);
     Motor1.setSmartCurrentLimit(30);
     Motor2.enableVoltageCompensation(12);
@@ -59,7 +52,6 @@ public class IntakeIOSparkMax implements IntakeIO {
     Motor3.burnFlash();
   }
 
-
   public void updateInputs(IntakeIOInputs inputs) {
     inputs.velocityRadPerSec =
         Units.rotationsPerMinuteToRadiansPerSecond(encoder.getVelocity() / GEAR_RATIO);
@@ -70,9 +62,11 @@ public class IntakeIOSparkMax implements IntakeIO {
   public double getVelocityRPM() {
     return encoder.getVelocity();
   }
+
   public double getCharacterizationVelocity() {
     return encoder.getVelocity();
   }
+
   @Override
   public void setVoltage(double volts) {
     Motor1.setVoltage(volts);

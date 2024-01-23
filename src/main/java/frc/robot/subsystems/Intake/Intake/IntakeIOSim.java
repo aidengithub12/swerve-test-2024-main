@@ -26,7 +26,6 @@ public class IntakeIOSim implements IntakeIO {
   private double ffVolts = 0.0;
   private double appliedVolts = 0.0;
 
-  
   public void updateInputs(IntakeIOInputs inputs) {
     if (closedLoop) {
       appliedVolts =
