@@ -14,6 +14,7 @@ package frc.robot.subsystems.Intake.Intake;
 // GNU General Public License for more details.
 
 import org.littletonrobotics.junction.AutoLog;
+import org.littletonrobotics.junction.inputs.LoggableInputs;
 
 public interface IntakeIO {
   @AutoLog
@@ -25,7 +26,7 @@ public interface IntakeIO {
   }
 
   /** Updates the set of loggable inputs. */
-  public default void updateInputs(IntakeIO inputs) {}
+  public default void updateInputs(LoggableInputs inputs) {}
 
   /** Run open loop at the specified voltage. */
   public default void setVoltage(double volts) {}

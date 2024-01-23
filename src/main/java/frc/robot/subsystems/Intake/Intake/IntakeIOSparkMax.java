@@ -26,9 +26,9 @@ public class IntakeIOSparkMax implements IntakeIO {
   private static final double GEAR_RATIO = 1.5;
 
   private final CANSparkMax Motor1 = new CANSparkMax(0, MotorType.kBrushless);
-  private final CANSparkMax Motor2 = new CANSparkMax(1, MotorType.kBrushless);
+  private static final CANSparkMax Motor2 = new CANSparkMax(1, MotorType.kBrushless);
   private final CANSparkMax Motor3 = new CANSparkMax(2, MotorType.kBrushless);
-  private final RelativeEncoder encoder = Motor2.getEncoder();
+  static final RelativeEncoder encoder = Motor2.getEncoder();
 
   public void ShooterIOSparkMax() {
     Motor1.restoreFactoryDefaults();

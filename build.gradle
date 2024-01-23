@@ -71,6 +71,7 @@ task(checkAkitInstall, dependsOn: "classes", type: JavaExec) {
 }
 compileJava.finalizedBy checkAkitInstall
 
+
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
 dependencies {
@@ -98,6 +99,7 @@ dependencies {
 
     def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
     annotationProcessor "org.littletonrobotics.akit.junction:junction-autolog:$akitJson.version"
+
 }
 
 test {
@@ -136,7 +138,7 @@ gversion {
     classPackage = "frc.robot"
     className    = "BuildConstants"
     dateFormat   = "yyyy-MM-dd HH:mm:ss z"
-    timeZone     = "America/New_York"
+    timeZone     = "America/New_York" // Use preferred time zone
     indent       = "  "
 }
 
@@ -180,4 +182,5 @@ spotless {
         indentWithSpaces(2)
         endWithNewline()
     }
+
 }
